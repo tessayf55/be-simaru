@@ -42,23 +42,32 @@ class UserController extends Controller
         return redirect()->route('users.index')->withSuccess('Great! You have Successfully loggedin');
     }
 
-    public function edit($id)
+    public function edit(User $user)
     {   
-        $user = User::where('id', $id)->first();
         $roles = Role::All();
         return view('users.edit', compact('user', 'roles'));
     }
 
-    public function update(User $user, Request $request)
-    {   
-        $data = User::where('id', $id);
+    public function update(Request $request, User $user)
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'role' => 'required|in:admin,dev,owner,user',
+        ]);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->role = $request->role;
+        if(!empty($request->password)) $user->password = Hash::make($request->password);
+        $user->save();
 
-        $data->name = $request->name;
-        $data->email = $request->email;
-
-        $data->save();
-        
         return redirect()->route('users.index')->withSuccess('Great! You have Successfully loggedin');
+    }
+
+    public function destroy(User $user)
+    {
+        $user->delete();
+        return redirect()->route('users.index')->with('success','user has been deleted successfully');
     }
 
 }

@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Table Users') }}</div>
   
                 <div class="card-body">
-                    <a href="{{ route('users.create') }}" class="btn btn-icon border-dashed bg-yellow-lt">
+                    <a href="{{ route('users.create') }}" class="btn btn-sm btn-secondary">
                         Tambah User
                     </a>
                     <table class="table">
@@ -31,14 +31,14 @@
                                 <td>{{$row->email}}</td>
                                 <td>{{$row->role}}</td>
                                 <td> 
-                                    <a href="{{ route('users.edit', $row->id) }}" class="btn btn-icon border-dashed bg-yellow-lt">
+                                    <a href="{{ route('users.edit', $row->id) }}" class="btn btn-sm btn-warning">
                                         Edit
                                     </a>
                                     <form action="{{ route('users.destroy',$row->id) }}" method="POST"
-                                        style="display: inline">
+                                    style="display: inline" onsubmit="return confirm('Do you really want to delete {{ $row->name }}?');">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-icon border-dashed bg-danger-lt"><span class="text-muted">
+                                        <button type="submit" class="btn btn-sm btn-danger"><span class="text-muted">
                                         Delete
                                     </span></button>
                                     </form>

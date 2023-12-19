@@ -9,12 +9,14 @@
                   <div class="card-header">Edit User</div>
                   <div class="card-body">
   
-                      <form action="{{ route('users.update' , $user->id) }}" method="PUT">
-                          @csrf
+                      <form action="{{ route('users.update' , $user->id) }}"  method="POST">
+                        @csrf
+                        @method('PUT')
                           <div class="form-group row mt-3">
                               <label for="name" class="col-md-4 col-form-label text-right">Name</label>
                               <div class="col-md-6">
-                                  <input type="text" id="name" class="form-control" name="name" required autofocus value="{{ $user->name }}">
+                                    <input type="hidden" id="id" name="id" value="{{ $user->id }}">
+                                    <input type="text" id="name" class="form-control" name="name" required autofocus value="{{ $user->name }}">
                                   @if ($errors->has('name'))
                                       <span class="text-danger">{{ $errors->first('name') }}</span>
                                   @endif
@@ -34,7 +36,7 @@
                           <div class="form-group row mt-3">
                               <label for="password" class="col-md-4 col-form-label text-right">Password</label>
                               <div class="col-md-6">
-                                  <input type="password" id="password" class="form-control" name="password" required>
+                                  <input type="password" id="password" class="form-control" name="password" >
                                   @if ($errors->has('password'))
                                       <span class="text-danger">{{ $errors->first('password') }}</span>
                                   @endif
