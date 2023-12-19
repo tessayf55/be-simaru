@@ -49,12 +49,16 @@ class UserController extends Controller
         return view('users.edit', compact('user', 'roles'));
     }
 
-    public function update(User $user)
+    public function update(User $user, Request $request)
     {   
-        $data = User::findOrFail($id)->first();
-        return view('users.edit')->with([
-            'data' => $data
-        ]);
+        $data = User::where('id', $id);
+
+        $data->name = $request->name;
+        $data->email = $request->email;
+
+        $data->save();
+        
+        return redirect()->route('users.index')->withSuccess('Great! You have Successfully loggedin');
     }
 
 }

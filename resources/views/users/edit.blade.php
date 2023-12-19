@@ -9,7 +9,7 @@
                   <div class="card-header">Edit User</div>
                   <div class="card-body">
   
-                      <form action="{{ route('users.update' , $user->id) }}" method="POST">
+                      <form action="{{ route('users.update' , $user->id) }}" method="PUT">
                           @csrf
                           <div class="form-group row mt-3">
                               <label for="name" class="col-md-4 col-form-label text-right">Name</label>
