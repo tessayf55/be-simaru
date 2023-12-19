@@ -41,4 +41,20 @@ class UserController extends Controller
          
         return redirect()->route('users.index')->withSuccess('Great! You have Successfully loggedin');
     }
+
+    public function edit($id)
+    {   
+        $user = User::where('id', $id)->first();
+        $roles = Role::All();
+        return view('users.edit', compact('user', 'roles'));
+    }
+
+    public function update(User $user)
+    {   
+        $data = User::findOrFail($id)->first();
+        return view('users.edit')->with([
+            'data' => $data
+        ]);
+    }
+
 }
