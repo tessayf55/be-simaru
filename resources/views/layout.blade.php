@@ -67,6 +67,15 @@
                         </li>
                     @else
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('users') }}">User</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Master Ruangan</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Booking Ruangan</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}">Logout</a>
                         </li>
                     @endguest
