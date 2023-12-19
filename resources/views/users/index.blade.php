@@ -8,6 +8,9 @@
                 <div class="card-header">{{ __('Table Users') }}</div>
   
                 <div class="card-body">
+                    <a href="{{ route('users.create') }}" class="btn btn-icon border-dashed bg-yellow-lt">
+                        Tambah User
+                    </a>
                     <table class="table">
                         <thead>
                             <tr>
@@ -27,6 +30,19 @@
                                 <td>{{$row->name}}</td>
                                 <td>{{$row->email}}</td>
                                 <td>{{$row->role}}</td>
+                                <td> 
+                                    <a href="{{ route('users.edit', $row->id) }}" class="btn btn-icon border-dashed bg-yellow-lt">
+                                        Edit
+                                    </a>
+                                    <form action="{{ route('users.destroy',$row->id) }}" method="POST"
+                                        style="display: inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-icon border-dashed bg-danger-lt"><span class="text-muted">
+                                        Delete
+                                    </span></button>
+                                    </form>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

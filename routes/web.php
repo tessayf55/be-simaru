@@ -27,4 +27,5 @@ Route::get('dashboard', [AuthController::class, 'dashboard']);
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 
 
-Route::get('/users', [UserController::class, 'index'])->name('users');
+// Route::get('/users', [UserController::class, 'index'])->name('users');
+Route::resource('users', UserController::class); //users.index, users.create, users.edit, users.update, users.destroy
