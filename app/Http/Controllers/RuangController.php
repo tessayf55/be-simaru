@@ -11,6 +11,10 @@ class RuangController extends Controller
         return response()->json(Ruangan::All());
     }
 
+    public function indexPage(){
+        return view('ruangans/index');
+    }
+
     public function create(Request $request)  {
         $validator = Validator::make($request->all(), [
             'nama_ruangan' => 'required',
