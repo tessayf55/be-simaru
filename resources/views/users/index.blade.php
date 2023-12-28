@@ -5,6 +5,11 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
+                @if (session('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 <div class="card-header">{{ __('Table Users') }}</div>
   
                 <div class="card-body">
