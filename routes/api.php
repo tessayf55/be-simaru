@@ -17,7 +17,7 @@ use App\Http\Controllers\BookingController;
 |
 */
 
-Route::middleware(['auth:sanctum','api', 'web'])
+Route::middleware(['auth:sanctum','api'])
 ->group(function () {
     Route::prefix("auth")
         ->group(function () {

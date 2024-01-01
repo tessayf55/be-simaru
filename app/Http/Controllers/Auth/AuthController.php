@@ -51,8 +51,12 @@ class AuthController extends Controller
    
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
+            
+            $user = User::where("email", $request->email)->first();
+            $token = $user->createToken("API_TOKEN");
+
             return redirect()->intended('dashboard')
-                        ->withSuccess('You have Successfully loggedin');
+                        ->withSuccess('You have Successfully loggedin with token'.$token);
         }
   
         return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
