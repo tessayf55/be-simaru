@@ -56,7 +56,7 @@ class AuthController extends Controller
             $token = $user->createToken("API_TOKEN");
 
             return redirect()->intended('dashboard')
-                        ->withSuccess('You have Successfully loggedin with token'.$token);
+                        ->withSuccess('You have Successfully loggedin with token'.$token->plainTextToken);
         }
   
         return redirect("login")->withSuccess('Oppes! You have entered invalid credentials');
