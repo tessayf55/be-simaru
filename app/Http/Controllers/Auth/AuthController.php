@@ -55,7 +55,7 @@ class AuthController extends Controller
             $user = User::where("email", $request->email)->first();
             $token = $user->createToken("API_TOKEN");
 
-            session('accessToken', $token->plainTextToken);
+            session(['accessToken' => $token->plainTextToken]);
 
             return redirect()->intended('dashboard')
                         ->withSuccess('You have Successfully loggedin with token');
