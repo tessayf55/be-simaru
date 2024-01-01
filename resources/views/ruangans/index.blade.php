@@ -93,7 +93,8 @@
 
                 $.ajax({
                     headers: {
-                        "Content-Type":"application/json"
+                        "Content-Type":"application/json",
+                        "Authorization": "Bearer {{ session()->put('accessToken') }}"
                     },
                     url:"{{ url('api/ruangans/create')}}",
                     method:"POST",
@@ -119,7 +120,8 @@
 
                 $.ajax({ 
                     headers: {
-                        "Content-Type":"application/json"
+                        "Content-Type":"application/json",
+                        "Authorization": "Bearer {{ session()->put('accessToken') }}"
                     },
                     url:"{{ url('api/ruangans/')}}/"+$('#id').val()+"/update",
                     method:"POST",
@@ -143,7 +145,8 @@
         $.ajax({
             type: "GET",
             headers: {
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "Authorization": "Bearer {{ session()->put('accessToken') }}"
             },
             url:"{{ url('api/ruangans/all')}}",
             success: function(response) {
@@ -187,7 +190,8 @@
         $.ajax({
             type: "GET",
             headers: {
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "Authorization": "Bearer {{ session()->put('accessToken') }}"
             },
             url:"{{ url('api/ruangans')}}/"+id+"/show",
             success: function(response) {
@@ -206,7 +210,8 @@
         alert('Yakin untuk hapus data ?');
         $.ajax({
             headers: {
-                "Content-Type":"application/json"
+                "Content-Type":"application/json",
+                "Authorization": "Bearer {{ session()->put('accessToken') }}"
             },
             url:"{{ url('api/ruangans')}}/"+id+"/delete",
             method:"DELETE",            
