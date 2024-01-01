@@ -94,7 +94,7 @@
                 $.ajax({
                     headers: {
                         "Content-Type":"application/json",
-                        "Authorization": "Bearer {{ session()->put('accessToken') }}"
+                        "Authorization": "Bearer {{ session()->get('accessToken') }}"
                     },
                     url:"{{ url('api/ruangans/create')}}",
                     method:"POST",
@@ -121,7 +121,7 @@
                 $.ajax({ 
                     headers: {
                         "Content-Type":"application/json",
-                        "Authorization": "Bearer {{ session()->put('accessToken') }}"
+                        "Authorization": "Bearer {{ session()->get('accessToken') }}"
                     },
                     url:"{{ url('api/ruangans/')}}/"+$('#id').val()+"/update",
                     method:"POST",
@@ -146,7 +146,7 @@
             type: "GET",
             headers: {
                 "Content-Type":"application/json",
-                "Authorization": "Bearer {{ session()->put('accessToken') }}"
+                "Authorization": "Bearer {{ session()->get('accessToken') }}"
             },
             url:"{{ url('api/ruangans/all')}}",
             success: function(response) {
@@ -191,7 +191,7 @@
             type: "GET",
             headers: {
                 "Content-Type":"application/json",
-                "Authorization": "Bearer {{ session()->put('accessToken') }}"
+                "Authorization": "Bearer {{ session()->get('accessToken') }}"
             },
             url:"{{ url('api/ruangans')}}/"+id+"/show",
             success: function(response) {
@@ -211,7 +211,7 @@
         $.ajax({
             headers: {
                 "Content-Type":"application/json",
-                "Authorization": "Bearer {{ session()->put('accessToken') }}"
+                "Authorization": "Bearer {{ session()->get('accessToken') }}"
             },
             url:"{{ url('api/ruangans')}}/"+id+"/delete",
             method:"DELETE",            
