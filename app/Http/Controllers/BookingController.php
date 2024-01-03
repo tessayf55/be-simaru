@@ -15,7 +15,6 @@ class BookingController extends Controller
     public function create(Request $request)  {
         $validator = Validator::make($request->all(), [
             'user_id' => ['required', 'numeric'],
-            'booking_id' => ['required', 'numeric'],
             'start_book' => 'required',
             'end_book' => 'required',
         ]);
@@ -25,7 +24,6 @@ class BookingController extends Controller
         }
         $booking = Booking::create([
             'user_id' => $request->user_id,
-            'booking_id' => $request->booking_id,
             'start_book' => $request->start_book,
             'end_book' => $request->end_book,
         ]);
@@ -42,7 +40,6 @@ class BookingController extends Controller
     public function update(Request $request, Booking $booking)  {
         $validator = Validator::make($request->all(), [
             'user_id' => ['required', 'numeric'],
-            'booking_id' => ['required', 'numeric'],
             'start_book' => 'required',
             'end_book' => 'required',
         ]);
@@ -51,7 +48,6 @@ class BookingController extends Controller
         }
         $booking = Booking::where('id', $booking->id)->update([
             'user_id' => $request->user_id,
-            'booking_id' => $request->booking_id,
             'start_book' => $request->start_book,
             'end_book' => $request->end_book,
         ]);
