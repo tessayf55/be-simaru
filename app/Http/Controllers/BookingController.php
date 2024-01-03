@@ -8,7 +8,7 @@ use Validator;
 class BookingController extends Controller
 {
     public function index() {
-        $bookings = Booking::with(['user', 'booking'])->get();
+        $bookings = Booking::with(['user', 'ruangan'])->get();
         return response()->json($bookings);
     }
 
